@@ -1,24 +1,3 @@
-const container = document.querySelector(".container");
-
-const saludar = () => {
-    const doctor = prompt ("Ingrese su nombre")
-    container.innerHTML = `<h3> Bienvenido Dr/a ${doctor}</h3>`
-} 
-
- saludar ();
-
-class Paciente {
-    constructor (nombre, apellido, edad, peso, altura, patologia, medicacion){
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.edad = edad;
-        this.peso = peso;
-        this.altura = altura;
-        this.patologia = patologia;
-        this.medicacion = medicacion;
-    }
-}
-
 const pte1 = new Paciente ("Candela", "Luca Cataldo",23, 52, 162, "escoliosis", "no toma medicacion")
 const pte2 = new Paciente ("Morena", "Ohannessian", 18, 50, 152, "")
 
@@ -63,15 +42,6 @@ pacientes.forEach(pacienteEnArray =>{
   `
 })
 
-
-class Medicamento {
-        constructor (nombre, gramos, patologia, costo) {
-            this.nombre = nombre;
-            this.gramos = gramos;
-            this.patologia = patologia;
-            this.costo = costo;
-    }
-}
     
 const med1 = new Medicamento ("Metformina", "850mg", "Diabetes", "$3000")
 const med2 = new Medicamento ("Sitagliptina", "50mg", "Diabetes", "$5000")
@@ -79,7 +49,7 @@ const med3 = new Medicamento ("Glimepirida", "4mg", "Diabetes", "$1500")
     
 let medicamentos = [med1, med2, med3]
 
-const medABuscar = prompt("Ingrese el medicamento por el que desea consultar")
+/* const medABuscar = prompt("Ingrese el medicamento por el que desea consultar") */
 
 let medicamentosBusqueda = medicamentos.find(medicamentos => medicamentos.nombre == "medABuscar")
 
