@@ -1,20 +1,11 @@
-/* for(let i = 0; i < pacientes.length; i++) {
-    console.log(array[i])
-}
+localStorage.setItem("pacientes", pacientesJSON)
 
-console.log(`El paciente nuevo ingresado se llama${this.nombre}, tiene ${this.edad}años, pesa${this.peso}kg, mide${this.altura}cm, tiene${this.patologia}y actualmente esta medicado con${this.medicacion}`)
+console.log(localStorage.getItem("pacientes"))
 
+/* para eliminar a alguien del localStorage: */
+/* localStorage.removeItem("paciente")  */
 
+localStorage.setItem("medicamentos", pacientesJSON)
 
- let eliminarPte = prompt("Ingrese el paciente al que quiere eliminar")
+console.log(localStorage.getItem("medicamentos"))
 
- let indice = nombresPtes.indexOf(eliminarPte)
-
- if(indice != -1) {
-     nombresPtes. splice (indice,1)
- } else {
-     alert ("No se encontró a dicho paciente")
- }
-
-
-console.log(document) */

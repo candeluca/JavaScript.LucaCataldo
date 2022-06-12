@@ -13,6 +13,16 @@ const med3 = new medicamento ("glimepirida", "4mg", "diabetes", "$1500")
 
 let medicamentos = [med1, med2, med3]
 
+let medicamentosJSON = JSON.stringify(medicamentos)
+
+//para pasar nuevamente a un objeto:
+let medicamentosParseados = JSON.parse (localStorage.getItem("medicamentos"))
+
+console.log (medicamentosParseados)
+
+
+
+
 inputTexto.addEventListener("input", () => {
   let buscador = inputTexto.value
   console.log(buscador.toLowerCase())

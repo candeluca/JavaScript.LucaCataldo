@@ -16,6 +16,17 @@ const pte3 = new paciente ("maximo", "ohannessian", 16, 70, 179, "")
 
 let pacientes = [pte1, pte2, pte3]
 
+let pacientesJSON = JSON.stringify(pacientes)
+
+//para pasar nuevamente a un objeto:
+let pacientesParseados = JSON.parse (localStorage.getItem("pacientes"))
+
+console.log (pacientesParseados)
+
+
+
+
+
 /* inputTexto.addEventListener("input", () => {
   let buscador = inputTexto.value
   console.log(buscador.toLowerCase())
