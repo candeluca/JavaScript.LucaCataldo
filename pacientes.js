@@ -1,5 +1,6 @@
 class paciente {
-    constructor (nombre, apellido, edad, peso, altura, patologia, medicacion){
+    constructor (id, nombre, apellido, edad, peso, altura, patologia, medicacion){
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
@@ -8,13 +9,18 @@ class paciente {
         this.patologia = patologia;
         this.medicacion = medicacion;
     }
+    mostrarNombrePte(){
+      console.log(this.nombre)
+    }
 }
 
-const pte1 = new paciente ("candela", "luca cataldo",23, 52, 162, "escoliosis", "no toma medicacion")
-const pte2 = new paciente ("morena", "ohannessian", 18, 50, 152, "")
-const pte3 = new paciente ("maximo", "ohannessian", 16, 70, 179, "")
+const pte1 = new paciente (1, "candela", "luca cataldo",23, 52, 162, "escoliosis", "no toma medicacion")
+const pte2 = new paciente (2, "morena", "ohannessian", 18, 50, 152, "")
+const pte3 = new paciente (3, "maximo", "ohannessian", 16, 70, 179, "")
 
 let pacientes = [pte1, pte2, pte3]
+
+let carrito = []
 
 let pacientesJSON = JSON.stringify(pacientes)
 
@@ -24,15 +30,6 @@ let pacientesParseados = JSON.parse (localStorage.getItem("pacientes"))
 console.log (pacientesParseados)
 
 
-
-
-
-/* inputTexto.addEventListener("input", () => {
-  let buscador = inputTexto.value
-  console.log(buscador.toLowerCase())
-  console.log(pacientes.filter (paciente => paciente.nombre.includes (buscador.toLowerCase())))
-}) */
- 
 inputTexto.addEventListener("change", () => {
   let buscador = inputTexto.value
   console.log(buscador.toLowerCase())
@@ -40,7 +37,7 @@ inputTexto.addEventListener("change", () => {
 
   pacientesFiltrados.forEach (paciente => {
     divPacientesFiltrados.innerHTML += `
-    <div class="card p-2" style="width: 18rem;">
+    <div class="card p-2"  style="width: 18rem;">
     <div class="card-body">
     <h5 class="card-title">El paciente buscado es: ${paciente.nombre} ${paciente.apellido}</h5>
     <p> Tiene ${paciente.edad} años</p>
@@ -55,35 +52,48 @@ inputTexto.addEventListener("change", () => {
 })
 
 let divPacientesFiltrados = document.getElementById ("divPacientesFiltrados")
- 
 
 
-pacientes.forEach(pacienteEnArray =>{
+pacientes.forEach(paciente =>{
     id=divCargas.innerHTML += `
 
-    <div class="card" id="paciente ${pacienteEnArray.id}" style="margin: 2rem">
+    <div class="card" id="paciente ${paciente.id}" style="margin: 2rem">
   <div class="card-body">
-    <h5 class="card-title">Nombre y Apellido: ${pacienteEnArray.nombre } ${pacienteEnArray.apellido}</h5>
+    <h5 class="card-title">Nombre y Apellido: ${paciente.nombre } ${paciente.apellido}</h5>
     <p class="card-text">
-     Edad: ${pacienteEnArray.edad}
+     Edad: ${paciente.edad}
     </p>
     <p class="card-text">
-     Peso:  ${pacienteEnArray.peso}
+     Peso:  ${paciente.peso}
     </p>
     <p class="card-text">
-     Altura: ${pacienteEnArray.altura}
+     Altura: ${paciente.altura}
     </p>
     <p class="card-text">
-     Patologia: ${pacienteEnArray.patologia}
+     Patologia: ${paciente.patologia}
    </p>
    <p class="card-text">
-    Medicacion: ${pacienteEnArray.medicacion}
+    Medicacion: ${paciente.medicacion}
   </p>
+  <button id= "boton ${paciente.id}" class="btn btn-dark"> Agregar al archivo </button>
   </div>
   </div>
-
   `
+}) 
+
+pacientes.forEach(paciente => {
+  document.getElementById(`boton ${paciente.id}`).addEventListener("click", () => {
+    console.log(paciente)
+    carrito.push (paciente)
+    localStorage.setItem ("pacientesGuardados", JSON.stringify(carrito))
+  })
+}) 
+
+document.getElementById("mostrar").addEventListener('click', () => {
+  let arrayParseado = JSON.parse(localStorage.getItem('pacientesGuardados'))
+  console.log(arrayParseado)
 })
+
 
 let boton1 = document.getElementById("boton1")
 

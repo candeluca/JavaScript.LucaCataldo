@@ -22,7 +22,6 @@ console.log (medicamentosParseados)
 
 
 
-
 inputTexto.addEventListener("input", () => {
   let buscador = inputTexto.value
   console.log(buscador.toLowerCase())

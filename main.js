@@ -5,7 +5,8 @@ console.log(localStorage.getItem("pacientes"))
 /* para eliminar a alguien del localStorage: */
 /* localStorage.removeItem("paciente")  */
 
-localStorage.setItem("medicamentos", pacientesJSON)
+/* localStorage.setItem("medicamentos", medicamentosJSON)
 
 console.log(localStorage.getItem("medicamentos"))
 
+ */
