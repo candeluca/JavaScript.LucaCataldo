@@ -1,5 +1,5 @@
 class paciente {
-    constructor (id, nombre, apellido, edad, peso, altura, patologia, medicacion){
+    constructor (nombre, apellido, edad, peso, altura, patologia, medicacion){
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
@@ -43,7 +43,7 @@ mostrar.addEventListener('click', () => {
 
   pacientesStorage.forEach (paciente => {
     divPacientes.innerHTML += `
-    <div class="card" style="margin: 2rem">
+    <div class="card" id = "Paciente ${paciente.nombre }" style="margin: 2rem">
     <div class="card-body">
     <h5 class="card-title">Nombre y Apellido: ${paciente.nombre } ${paciente.apellido}</h5>
     <p class="card-text">
@@ -67,17 +67,6 @@ mostrar.addEventListener('click', () => {
   })
 })
 
-
-
-
-let carrito = []
-
-let pacientesJSON = JSON.stringify(pacientes)
-
-//para pasar nuevamente a un objeto:
-let pacientesParseados = JSON.parse (localStorage.getItem("pacientes"))
-
-console.log (pacientesParseados)
 
 
 inputTexto.addEventListener("change", () => {
@@ -104,47 +93,6 @@ inputTexto.addEventListener("change", () => {
 
 let divPacientesFiltrados = document.getElementById ("divPacientesFiltrados")
 
-
-/* pacientes.forEach(paciente =>{
-    id=divCargas.innerHTML += `
-
-    <div class="card" id="paciente ${paciente.id}" style="margin: 2rem">
-  <div class="card-body">
-    <h5 class="card-title">Nombre y Apellido: ${paciente.nombre } ${paciente.apellido}</h5>
-    <p class="card-text">
-     Edad: ${paciente.edad}
-    </p>
-    <p class="card-text">
-     Peso:  ${paciente.peso}
-    </p>
-    <p class="card-text">
-     Altura: ${paciente.altura}
-    </p>
-    <p class="card-text">
-     Patologia: ${paciente.patologia}
-   </p>
-   <p class="card-text">
-    Medicacion: ${paciente.medicacion}
-  </p>
-  <button id= "boton ${paciente.id}" class="btn btn-dark"> Agregar al archivo </button>
-  </div>
-  </div>
-  `
-})  */
-
-/* pacientes.forEach(paciente => {
-  document.getElementById(`boton ${paciente.id}`).addEventListener("click", () => {
-    console.log(paciente)
-    carrito.push (paciente)
-    localStorage.setItem ("pacientesGuardados", JSON.stringify(carrito))
-  })
-}) 
-
-document.getElementById("mostrar").addEventListener('click', () => {
-  let arrayParseado = JSON.parse(localStorage.getItem('pacientesGuardados'))
-  console.log(arrayParseado)
-})
- */
 
 let boton1 = document.getElementById("boton1")
 

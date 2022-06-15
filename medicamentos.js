@@ -31,16 +31,13 @@ idFormularioMed.addEventListener('submit', (e) => {
 })
 
 mostrarMed.addEventListener('click', () => {
-  let pacientesStorage = JSON.parse(localStorage.getItem('pacientes'))
+  let medicamentosStorage = JSON.parse(localStorage.getItem('medicamentos'))
 
   medicamentosStorage.forEach (medicamento => {
     divMedicamentos.innerHTML += `
     <div class="card" style="margin: 2rem">
     <div class="card-body">
-    <h5 class="card-title"> Medicamento: ${medicamento.nombre }</h5>
-    <p class="card-text">
-     Gramos: ${medicamento.gramos}
-    </p>
+    <h5 class="card-title"> Medicamento: ${medicamento.nombre} ${medicamento.gramos}gr</h5>
     <p class="card-text">
      Patologia:  ${medicamento.patologia}
     </p>
@@ -56,50 +53,36 @@ mostrarMed.addEventListener('click', () => {
 
 
 
-
-
-
-let medicamentosJSON = JSON.stringify(medicamentos)
-
-//para pasar nuevamente a un objeto:
-let medicamentosParseados = JSON.parse (localStorage.getItem("medicamentos"))
-
-console.log (medicamentosParseados)
-
-
-
-inputTexto.addEventListener("input", () => {
+inputTexto.addEventListener("change", () => {
   let buscador = inputTexto.value
   console.log(buscador.toLowerCase())
-  console.log(medicamentos.filter (medicamento => medicamento.nombre.includes (buscador.toLowerCase())))
-})
- 
+  let medicamentosFiltrados = medicamentos.filter (medicamento => medicamento.nombre.includes (buscador.toLowerCase()))
 
 
-medicamentos.forEach(medicamentoEnArray =>{
-    id=divCargasMed.innerHTML += `
-
-    <div class="card" id="medicamento ${medicamentoEnArray.id}" style="margin: 2rem">
-  <div class="card-body">
-    <h5 class="card-title">Nombre: ${medicamentoEnArray.nombre}</h5>
-    <p class="card-text">
-     Gramos: ${medicamentoEnArray.gramos}
-    </p>
-    <p class="card-text">
-     Patologia: ${medicamentoEnArray.patologia}
-    </p>
-    <p class="card-text">
-     Costo: ${medicamentoEnArray.costo}
-    </p>
-  </div>
-  </div>
- 
-  `
+  medicamentosFiltrados.forEach (medicamento => {
+    divMedicamentosFiltrados.innerHTML += 
+    `
+    <div class="card p-2"  style="width: 18rem;">
+    <div class="card-body">
+    <h5 class="card-title">El medicamento buscado es: ${medicamento.nombre} ${medicamento.gramos}gr</h5>
+    <p> Se utiliza para la patologia: ${medicamento.altura} </p>
+    <p> Tiene un costo de: $${medicamento.altura}</p>
+    </div>
+    </div>
+    `
+  })
 })
 
 
 let boton2 = document.getElementById("boton2")
 
-boton2.addEventListener("click", () => {
-    console.log("medicamento cargado")
+boton2.addEventListener("click", ()=> {
+  Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Medicamento cargado exitosamente',
+      showConfirmButton: false,
+      timer: 1500
+    })
 })
+
