@@ -15,9 +15,48 @@ if(localStorage.getItem('medicamentos')) {
   localStorage.setItem('medicamentos', JSON.stringify(medicamentos))
 }
 
-let idFormulario = document.querySelector('#idFormMed')
-let divProductos = document.querySelector ('#divProductos')
-let mostrar = document.querySelector ('#mostrar')
+let idFormularioMed = document.querySelector('#idFormMed')
+let divMedicamentos = document.querySelector ('#divMedicamentos')
+let mostrarMed = document.querySelector ('#mostrarMed')
+
+idFormularioMed.addEventListener('submit', (e) => {
+  e.preventDefault()
+  let datosFormMed = new FormData(e.target)
+
+  const pte = new medicamento (datosFormMed.get('nombre'), datosFormMed.get('gramos'), datosFormMed.get('patologia'), datosFormMed.get('costo'))
+  medicamentos.push(pte)
+  console.log(medicamentos)
+  localStorage.setItem('medicamentos', JSON.stringify(medicamentos))
+  idFormularioMed.reset()
+})
+
+mostrarMed.addEventListener('click', () => {
+  let pacientesStorage = JSON.parse(localStorage.getItem('pacientes'))
+
+  medicamentosStorage.forEach (medicamento => {
+    divMedicamentos.innerHTML += `
+    <div class="card" style="margin: 2rem">
+    <div class="card-body">
+    <h5 class="card-title"> Medicamento: ${medicamento.nombre }</h5>
+    <p class="card-text">
+     Gramos: ${medicamento.gramos}
+    </p>
+    <p class="card-text">
+     Patologia:  ${medicamento.patologia}
+    </p>
+    <p class="card-text">
+     Costo: ${medicamento.costo}
+    </p>
+  </div>
+  </div>
+  `
+  })
+})
+
+
+
+
+
 
 
 let medicamentosJSON = JSON.stringify(medicamentos)
