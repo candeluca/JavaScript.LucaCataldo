@@ -30,43 +30,49 @@
 
 <form id="idForm" class="p-3">
     <div class="mb-3">
-      <label for="nombre" class="form-label">Nombre </label>
-      <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp">
+      <label for="idNombre" class="form-label">Nombre </label>
+      <input type="text" class="form-control" name="nombre" id="idNombre">
     </div>
 
     <div class="mb-3">
-        <label for="nombre" class="form-label">Apellido</label>
-        <input type="text" class="form-control" id="Apellido" aria-describedby="emailHelp">
+        <label for="idApellido" class="form-label">Apellido</label>
+        <input type="text" class="form-control" name="apellido"  id="idApellido">
     </div>
 
     <div class="mb-3">
-        <label for="nombre" class="form-label"> Edad</label>
-        <input type="number" class="form-control" id="edad" aria-describedby="emailHelp">
+        <label for="idEdad" class="form-label"> Edad</label>
+        <input type="number" class="form-control" name="edad"  id="idEdad">
     </div>
 
     <div class="mb-3">
-        <label for="nombre" class="form-label"> Peso</label>
-        <input type="number" class="form-control" id="Peso" aria-describedby="emailHelp">
+        <label for="idPeso" class="form-label"> Peso</label>
+        <input type="number" class="form-control" name="peso" id="idPeso">
     </div>
 
     <div class="mb-3">
-        <label for="nombre" class="form-label"> Altura</label>
-        <input type="number" class="form-control" id="Altura" aria-describedby="emailHelp">
+        <label for="idAltura" class="form-label"> Altura</label>
+        <input type="number" class="form-control" name="altura" id="idAltura">
     </div>
 
     <div class="mb-3">
-        <label for="nombre" class="form-label"> Patologia</label>
-        <input type="text" class="form-control" id="Patologia" aria-describedby="emailHelp">
+        <label for="idPatologia" class="form-label"> Patologia</label>
+        <input type="text" class="form-control" name="patologia" id="idPatologia">
     </div>
 
     <div class="mb-3">
-        <label for="nombre" class="form-label"> Medicación</label>
-        <input type="text" class="form-control" id="Medicación" aria-describedby="emailHelp">
+        <label for="idMedicacion" class="form-label"> Medicación</label>
+        <input type="text" class="form-control" name="medicacion" id="idMedicacion">
     </div>
 
-     <button id="boton1" type="submit" class="btn btn-primary">Cargar</button>
+     <button id="boton1" type="submit" class="btn btn-dark">Cargar</button>
      
 </form>
+
+<button id="mostrar" class="btn btn-danger p-2"> Mostrar Pacientes Cargados</button>
+
+<br>
+
+<div id="divProductos"></div>
 
 <input type="text" id="inputTexto">
 
@@ -74,13 +80,11 @@
 
 <br>
 
-<div id="divCargas" class="row">
+<div class="row container" id="divCargas">
   <h2>
     Los pacientes cargados hasta el momento son:
   </h2>
 </div>
-
-<button id="mostrar"> Mostrar Pacientes Archivados</button>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.16/dist/sweetalert2.all.min.js"></script>
 <script src="pacientes.js"></script>

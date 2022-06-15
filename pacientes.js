@@ -14,11 +14,65 @@ class paciente {
     }
 }
 
-const pte1 = new paciente (1, "candela", "luca cataldo",23, 52, 162, "escoliosis", "no toma medicacion")
+/* const pte1 = new paciente (1, "candela", "luca cataldo",23, 52, 162, "escoliosis", "no toma medicacion")
 const pte2 = new paciente (2, "morena", "ohannessian", 18, 50, 152, "")
 const pte3 = new paciente (3, "maximo", "ohannessian", 16, 70, 179, "")
+ */
+let pacientes = []
 
-let pacientes = [pte1, pte2, pte3]
+if(localStorage.getItem('pacientes')) {
+  pacientes = JSON.parse(localStorage.getItem('pacientes'))
+} else {
+  localStorage.setItem('pacientes', JSON.stringify(pacientes))
+}
+
+
+
+let idFormulario = document.querySelector('#idForm')
+let divProductos = document.querySelector ('#divProductos')
+let mostrar = document.querySelector ('#mostrar')
+
+idFormulario.addEventListener('submit', (e) => {
+  e.preventDefault()
+  let datosForm = new FormData(e.target)
+
+  const pte = new paciente (datosForm.get('id'), datosForm.get('nombre'), datosForm.get('apellido'), datosForm.get('edad'), datosForm.get('peso'), datosForm.get('altura'), datosForm.get('patologia'),datosForm.get('medicacion'))
+  pacientes.push(pte)
+  console.log(pacientes)
+  localStorage.setItem('pacientes', JSON.stringify(pacientes))
+  idFormulario.reset()
+})
+
+
+mostrar.addEventListener('click', () => {
+  let pacientesStorage = JSON.parse(localStorage.getItem('pacientes'))
+
+  pacientesStorage.forEach (paciente => {
+    divProductos.innerHTML += `
+    <div class="card" id="paciente ${paciente.id}" style="margin: 2rem">
+    <div class="card-body">
+    <h5 class="card-title">Nombre y Apellido: ${paciente.nombre } ${paciente.apellido}</h5>
+    <p class="card-text">
+     Edad: ${paciente.edad}
+    </p>
+    <p class="card-text">
+     Peso:  ${paciente.peso}
+    </p>
+    <p class="card-text">
+     Altura: ${paciente.altura}
+    </p>
+    <p class="card-text">
+     Patologia: ${paciente.patologia}
+   </p>
+   <p class="card-text">
+    Medicacion: ${paciente.medicacion}
+  </p>
+  `
+  })
+})
+
+
+
 
 let carrito = []
 
@@ -36,7 +90,8 @@ inputTexto.addEventListener("change", () => {
   let pacientesFiltrados = pacientes.filter (paciente => paciente.nombre.includes (buscador.toLowerCase()))
 
   pacientesFiltrados.forEach (paciente => {
-    divPacientesFiltrados.innerHTML += `
+    divPacientesFiltrados.innerHTML += 
+    `
     <div class="card p-2"  style="width: 18rem;">
     <div class="card-body">
     <h5 class="card-title">El paciente buscado es: ${paciente.nombre} ${paciente.apellido}</h5>
@@ -46,15 +101,15 @@ inputTexto.addEventListener("change", () => {
     <p> Su patologia es: ${paciente.patologia} </p>
     <p> La medicacion que toma es: ${paciente.medicacion} </p>
     </div>
-    </div>`
-
+    </div>
+    `
   })
 })
 
 let divPacientesFiltrados = document.getElementById ("divPacientesFiltrados")
 
 
-pacientes.forEach(paciente =>{
+/* pacientes.forEach(paciente =>{
     id=divCargas.innerHTML += `
 
     <div class="card" id="paciente ${paciente.id}" style="margin: 2rem">
@@ -79,9 +134,9 @@ pacientes.forEach(paciente =>{
   </div>
   </div>
   `
-}) 
+})  */
 
-pacientes.forEach(paciente => {
+/* pacientes.forEach(paciente => {
   document.getElementById(`boton ${paciente.id}`).addEventListener("click", () => {
     console.log(paciente)
     carrito.push (paciente)
@@ -93,21 +148,16 @@ document.getElementById("mostrar").addEventListener('click', () => {
   let arrayParseado = JSON.parse(localStorage.getItem('pacientesGuardados'))
   console.log(arrayParseado)
 })
-
+ */
 
 let boton1 = document.getElementById("boton1")
 
 boton1.addEventListener("click", ()=> {
     Swal.fire({
-        position: 'top-end',
+        position: 'center',
         icon: 'success',
         title: 'Paciente cargado exitosamente',
         showConfirmButton: false,
         timer: 1500
       })
 })
-
-/* lo de arriba pero sin el cartel: 
-boton1.addEventListener("click", () => {
-  console.log("medicamento cargado")
-}) */
