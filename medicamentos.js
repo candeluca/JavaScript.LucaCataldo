@@ -7,11 +7,18 @@ class medicamento {
 }
 }
 
-const med1 = new medicamento ("metformina", "850mg", "diabetes", "$3000")
-const med2 = new medicamento ("sitagliptina", "50mg", "diabetes", "$5000")
-const med3 = new medicamento ("glimepirida", "4mg", "diabetes", "$1500")
+let medicamentos = []
 
-let medicamentos = [med1, med2, med3]
+if(localStorage.getItem('medicamentos')) {
+  pacientes = JSON.parse(localStorage.getItem('medicamentos'))
+} else {
+  localStorage.setItem('medicamentos', JSON.stringify(medicamentos))
+}
+
+let idFormulario = document.querySelector('#idFormMed')
+let divProductos = document.querySelector ('#divProductos')
+let mostrar = document.querySelector ('#mostrar')
+
 
 let medicamentosJSON = JSON.stringify(medicamentos)
 

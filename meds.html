@@ -27,37 +27,40 @@
     </div>
 
 
-      <form id="idForm" class="p-3">
+      <form id="idFormMed" class="p-3">
         <div class="mb-3">
-          <label for="nombre" class="form-label">Nombre Medicamento</label>
-          <input type="text" class="form-control" id="Medicamento" aria-describedby="emailHelp">
+          <label for="idMedicamento" class="form-label">Nombre Medicamento</label>
+          <input type="text" class="form-control" name="medicamento" id="idMedicamento">
         </div>
 
         <div class="mb-3">
-          <label for="nombre" class="form-label"> Gramos</label>
-          <input type="number" class="form-control" id="gramos" aria-describedby="emailHelp">
+          <label for="idGramos" class="form-label"> Gramos</label>
+          <input type="number" class="form-control" name="gramos" id="idGramos">
         </div>
 
         <div class="mb-3">
-          <label for="nombre" class="form-label"> Patologia</label>
-          <input type="text" class="form-control" id="Patologia" aria-describedby="emailHelp">
+          <label for="idPatologia" class="form-label"> Patologia</label>
+          <input type="text" class="form-control" name="patologia" id="idPatologia">
         </div>
 
         <div class="mb-3">
-          <label for="nombre" class="form-label"> Costo en $</label>
-          <input type="number" class="form-control" id="Costo" aria-describedby="emailHelp">
+          <label for="idCosto" class="form-label"> Costo en $</label>
+          <input type="number" class="form-control" name="costo" id="idCosto" >
         </div>
 
         <button id="boton2" type="submit" class="btn btn-primary">Cargar</button>
 </form>
 
+<button id="mostrarMed" class="btn btn-danger p-2"> Mostrar Medicamentos Cargados</button>
+
+<br>
+
+<div id="divMedicamentos"></div>
+
+<br>
+
 <input type="text" id="inputTexto">
 
-  <div id="divCargasMed">
-    <h2>
-      Los medicamentos cargados hasta el momento son:
-    </h2>
-  </div>
   
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.16/dist/sweetalert2.all.min.js"></script>
 <script src="medicamentos.js"></script>
